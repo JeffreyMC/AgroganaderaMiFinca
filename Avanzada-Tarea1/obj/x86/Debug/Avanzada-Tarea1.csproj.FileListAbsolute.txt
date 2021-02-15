@@ -1,0 +1,6 @@
+/home/jeff/Projects/Avanzada-Tarea1/Avanzada-Tarea1/bin/Debug/Avanzada-Tarea1.exe
+/home/jeff/Projects/Avanzada-Tarea1/Avanzada-Tarea1/bin/Debug/Avanzada-Tarea1.pdb
+/home/jeff/Projects/Avanzada-Tarea1/Avanzada-Tarea1/obj/x86/Debug/Avanzada-Tarea1.csprojAssemblyReference.cache
+/home/jeff/Projects/Avanzada-Tarea1/Avanzada-Tarea1/obj/x86/Debug/Avanzada-Tarea1.csproj.CoreCompileInputs.cache
+/home/jeff/Projects/Avanzada-Tarea1/Avanzada-Tarea1/obj/x86/Debug/Avanzada-Tarea1.exe
+/home/jeff/Projects/Avanzada-Tarea1/Avanzada-Tarea1/obj/x86/Debug/Avanzada-Tarea1.pdb

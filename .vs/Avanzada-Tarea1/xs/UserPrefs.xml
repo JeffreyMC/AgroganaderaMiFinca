@@ -1,0 +1,26 @@
+﻿<Properties StartupConfiguration="{A65F5E15-A812-4EC8-8624-A759801F9FE1}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Avanzada-Tarea1/Finca.cs">
+    <Files>
+      <File FileName="Avanzada-Tarea1/Program.cs" Line="16" Column="34" />
+      <File FileName="Avanzada-Tarea1/Finca.cs" Line="10" Column="22" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Avanzada-Tarea1" expanded="True">
+            <Node name="Avanzada-Tarea1" expanded="True">
+              <Node name="Finca.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Avanzada-Tarea1 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

@@ -4,7 +4,7 @@ namespace AvanzadaTarea1
     public class Dueno : Persona
     {
         public Dueno(int id, string nombre, string primerApellido, string segundoApellido,
-                     string correo, int numeroCelular, Finca fincaAsociada)
+                     string correo, string numeroCelular, Finca fincaAsociada)
         {
             Id = id;
             Nombre = nombre;
@@ -18,7 +18,7 @@ namespace AvanzadaTarea1
         public Dueno() { }
 
         public string Correo { get; set; }
-        public int NumeroCelular { get; set; }
+        public string NumeroCelular { get; set; }
         public Finca FincaAsociada { get; set; }
     }
 }

@@ -26,7 +26,7 @@ namespace AvanzadaTarea1
         {
             bool seguir = true;
 
-    
+
 
             do
             {
@@ -42,13 +42,13 @@ namespace AvanzadaTarea1
 
                 do
                 {
-                    Console.Write("Ingrese el número de finca: ");
-                    string noFinca = Console.ReadLine();
-
                     //verifico que sea entero
-                    if (VerificaEntero(noFinca))
+                    try
                     {
-                        numeroFinca = Convert.ToInt32(noFinca);
+                        Console.Write("Ingrese el número de finca: ");
+
+
+                        numeroFinca = Convert.ToInt32(Console.ReadLine());
 
                         //verifica que no exista una finca con el mismo numero
                         if (ExisteFinca(numeroFinca))
@@ -63,7 +63,7 @@ namespace AvanzadaTarea1
                         }
 
                     }
-                    else
+                    catch(Exception e)
                     {
                         Console.Clear();
                         Console.WriteLine("Debe digitar un dato numérico. Intente de nuevo.\n\n");
@@ -77,17 +77,16 @@ namespace AvanzadaTarea1
 
                 do
                 {
-                    Console.Write("Ingrese el tamaño de la finca: ");
-                    string tamanio = Console.ReadLine();
-
+                
                     //verifico que sea entero
-                    if (VerificaDouble(tamanio))
+                    try
                     {
-                        tamanioFinca = Convert.ToDouble(tamanio);
+                        Console.Write("Ingrese el tamaño de la finca: ");
+                        tamanioFinca = Convert.ToDouble(Console.ReadLine());
                         continuar = false;
                         Console.Clear();
                     }
-                    else
+                    catch(Exception e)
                     {
                         Console.Clear();
                         continuar = true;
@@ -146,10 +145,13 @@ namespace AvanzadaTarea1
             bool seguir = true;
             int idDueno = 0;
             int idFinca = 0;
+            Finca fincaDueno = null;
 
             //verifica que existan fincas
             if (contadorFinca == 0)
-                return "NO existen fincas registradas. Registre una finca primero";
+                return "NO existen fincas registradas. Registre una finca primero\n\n";
+
+            Console.WriteLine("***REGISTRAR DUEÑO***\n\n");
 
             do
             {
@@ -160,13 +162,11 @@ namespace AvanzadaTarea1
 
                 do
                 {
-                    Console.Write("Ingrese la identificación o id: ");
-                    string id = Console.ReadLine();
-
-                    //verifico que sea entero
-                    if (VerificaEntero(id))
+                
+                    try
                     {
-                        idDueno = Convert.ToInt32(id);
+                        Console.Write("Ingrese la identificación o id: ");
+                        idDueno = Convert.ToInt32(Console.ReadLine());
 
                         //verifico que no exista un id igual
                         if (ExisteDueno(idDueno))
@@ -180,11 +180,12 @@ namespace AvanzadaTarea1
                             Console.Clear();
                         }
                     }
-                    else
+                    catch(Exception e)
                     {
                         Console.Clear();
                         Console.WriteLine("Debe digitar un dato numérico. Intente de nuevo.\n\n");
                     }
+
                 } while (continuar);
 
                 Console.Write("Ingrese su nombre: ");
@@ -211,21 +212,34 @@ namespace AvanzadaTarea1
 
                 do
                 {
-                    Console.Write("Ingrese el número de finca: ");
-                    string numeroFinca = Console.ReadLine();
-
                     //verifico que sea entero
-                    if (VerificaEntero(numeroFinca))
+                    try
                     {
-                        idFinca = Convert.ToInt32(numeroFinca);
+                        Console.Write("Ingrese el número de finca: ");
+
+                        idFinca = Convert.ToInt32(Console.ReadLine());
 
                         //verifica que exista la finca
                         if (ExisteFinca(idFinca))
                         {
-                            fincaIncorrecta = false;
-                            continuar = false;
-                            Console.Clear();
+
+                            if (ExisteDuenoFinca(idFinca))
+                            {
+                                Console.Clear();
+                                Console.WriteLine("La finca ingresada ya cuenta con un dueño. Intente otro número\n\n");
+                            }
+
+                            else
+                            {
+                                //busca la finca y la agrega a un nuevo onjeto
+                                fincaDueno = BuscaFinca(idFinca);
+
+                                fincaIncorrecta = false;
+                                continuar = false;
+                                Console.Clear();
+                            }
                         }
+
                         else
                         {
                             Console.Clear();
@@ -233,46 +247,163 @@ namespace AvanzadaTarea1
                         }
 
                     }
-                    else
+                    catch(Exception e)
                     {
                         Console.Clear();
                         Console.WriteLine("Debe digitar un dato numérico. Intente de nuevo.\n\n");
                     }
                 } while (fincaIncorrecta);
 
+                // datos del arreglo
+                Dueno duenoNuevo = new Dueno(idDueno, nombre, primerApellido, segundoApellido,
+                 correo, celular, fincaDueno);
 
+                dueno[contadorDueno] = duenoNuevo;
+                contadorDueno++;
 
+                bool salirDelCiclo = true;
+                do
+                {
+                    Console.Clear();
+                    Console.Write("¿Desea agregar otro dueño? S/N: ");
+                    string respuesta = Console.ReadLine().ToUpper();
+
+                    if (respuesta == "S")
+                    {
+                        salirDelCiclo = true;
+                        Console.Clear();
+                    }
+                    else if (respuesta == "N")
+                    {
+                        salirDelCiclo = false;
+                        seguir = false;
+                        Console.Clear();
+
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("\nPor favor ingrese una opción válida: S/N");
+
+                    }
+                } while (!salirDelCiclo);
             } while (seguir);
 
 
             return "Dueño registrado con éxito\n\n";
         }
 
-        public bool VerificaEntero(string dato)
+        public string RegistrarEmpleado()
         {
-            try
+            bool seguir = true;
+            double salario = 0;
+            int idEmpleado = 0;
+
+            Console.WriteLine("***REGISTRAR EMPLEADO***\n\n");
+
+            do
             {
-                int numero = Convert.ToInt32(dato);
-                return true;
-            }
-            catch(FormatException e)
-            {
-                return false;
-            }
+                if (contadorEmpleado >= 10)
+                    return "Lo sentimos, ya no se pueden registrar más empleados\n\n";
+
+                bool continuar = true;
+
+                do
+                {
+                    try
+                    {
+                        Console.Write("Ingrese el id de empleado: ");
+                        idEmpleado = Convert.ToInt32(Console.ReadLine());
+                        Console.Clear();
+
+                        if (ExisteEmpleado(idEmpleado))
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Ya existe un empleado con ese ID. Intente de nuevo.\n\n");
+                        }
+                        else
+                        {
+                            continuar = false;
+                        }
+                    }
+                    catch(FormatException e)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Debe digitar un dato numérico. Intente de nuevo.\n\n");
+                    }
+                } while (continuar);
+
+
+                Console.Write("Ingrese su nombre: ");
+                string nombre = Console.ReadLine();
+                Console.Clear();
+
+                Console.Write("Ingrese su primer apellido: ");
+                string primerApellido = Console.ReadLine();
+                Console.Clear();
+
+                Console.Write("Ingrese su segundo apellido: ");
+                string segundoApellido = Console.ReadLine();
+                Console.Clear();
+
+                do
+                {
+                    continuar = true;
+
+                    try
+                    {
+                        Console.Write("Ingrese el monto del sueldo: ");
+                        salario = Convert.ToDouble(Console.ReadLine());
+
+                        continuar = false;
+                    }
+                    catch (FormatException e)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Debe digitar un dato numérico. Intente de nuevo.\n\n");
+                    }
+
+                } while (continuar);
+
+                Empleado empleadoNuevo = new Empleado(idEmpleado, nombre, primerApellido, segundoApellido, salario);
+
+                //se pasa al objeto empleado
+                empleado[contadorEmpleado] = empleadoNuevo;
+                contadorEmpleado++;
+
+                bool salirDelCiclo = true;
+                do
+                {
+                    Console.Clear();
+                    Console.Write("¿Desea agregar otro empleado? S/N: ");
+                    string respuesta = Console.ReadLine().ToUpper();
+
+                    if (respuesta == "S")
+                    {
+                        salirDelCiclo = true;
+                        Console.Clear();
+                    }
+                    else if (respuesta == "N")
+                    {
+                        salirDelCiclo = false;
+                        seguir = false;
+                        Console.Clear();
+
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("\nPor favor ingrese una opción válida: S/N");
+                    }
+
+                } while (!salirDelCiclo);
+
+            } while (seguir);
+
+            return "Empleado agregado con éxito\n\n";
         }
 
-        public bool VerificaDouble(string dato)
-        {
-            try
-            {
-                Double numero = Convert.ToDouble(dato);
-                return true;
-            }
-            catch (FormatException e)
-            {
-                return false;
-            }
-        }
+
 
         public bool ExisteFinca(int id)
         {
@@ -288,7 +419,7 @@ namespace AvanzadaTarea1
                         return true;
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return false;
             }
@@ -311,7 +442,60 @@ namespace AvanzadaTarea1
                         return true;
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
+            {
+                return false;
+            }
+
+
+            return false;
+        }
+
+        public bool ExisteDuenoFinca(int idFinca)
+        {
+            try
+            {
+                foreach (Dueno d in dueno)
+                {
+                    if (d.FincaAsociada.NoFinca == idFinca)
+                        return true;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+
+            return false;
+        }
+
+
+        public Finca BuscaFinca(int id)
+        {
+            foreach(Finca f in finca)
+            {
+                if(f.NoFinca == id)
+                {
+                    return f;
+                }
+            }
+
+            return null;
+        }
+
+
+        public bool ExisteEmpleado(int id)
+        {
+            try
+            {
+                foreach (Empleado e in empleado)
+                {
+                    if (e.Id == id)
+                        return true;
+                }
+            }
+            catch (Exception e)
             {
                 return false;
             }

@@ -30,8 +30,10 @@ namespace AvanzadaTarea1
                 {
                     case "1":   Console.WriteLine(op.RegistrarFinca());
                                 break;
-                    case "2": break;
-                    case "3": break;
+                    case "2":   Console.WriteLine(op.RegistrarDueno());
+                                break;
+                    case "3":   Console.WriteLine(op.RegistrarEmpleado());
+                                break;
                     case "4": break;
                     case "5": break;
                     case "6": break;

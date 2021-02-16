@@ -4,7 +4,7 @@ namespace AvanzadaTarea1
     public class Animal
     {
         public Animal(int id, string nombre, Finca finca, Raza raza, DateTime fechaNacimiento,
-                        bool sexo, string padre, string madre)
+                        int sexo, string padre, string madre)
         {
             Id = id;
             Nombre = nombre;
@@ -23,7 +23,7 @@ namespace AvanzadaTarea1
         public Finca FincaAsociada { get; set; }
         public Raza RazaAnimal { get; set; }
         public DateTime FechaNacimiento { get; set; }
-        public bool Sexo { get; set; }
+        public int Sexo { get; set; }
         public string Padre { get; set; }
         public string Madre { get; set; }
 

@@ -699,8 +699,7 @@ namespace AvanzadaTarea1
                 } while (continuar);
 
                 //Fecha de nacimiento en formato
-                DateTime fechaNacimiento = new DateTime(anio, dia, mes);
-                fechaNacimiento.ToString("dd-MM-yy");
+                DateTime fechaNacimiento = new DateTime(anio, mes, dia);
 
                 do
                 {
@@ -1057,7 +1056,7 @@ namespace AvanzadaTarea1
                 lista += "Nombre: " + animal[i].Nombre + "\n";
                 lista += "Nombre finca: " + animal[i].FincaAsociada.Nombre + "\n";
                 lista += "Raza: " + animal[i].RazaAnimal.Descripcion + "\n";
-                lista += "Fecha de nacimiento: " + animal[i].FechaNacimiento + "\n";
+                lista += "Fecha de nacimiento: " + animal[i].FechaNacimiento.ToString("dd/MM/yyyy") + "\n";
 
                 if(animal[i].Sexo == 1)
                     lista += "Sexo: Hembra\n";

@@ -30,8 +30,8 @@ namespace AvanzadaTarea1
 
             do
             {
-                if (contadorFinca == 9)
-                    return "Lo sentimos. Ya no se pueden registrar fincas. Cupos llenos (10)";
+                if (contadorFinca == 10)
+                    return "Lo sentimos. Ya no se pueden registrar fincas. Cupos llenos (10)\n\n";
 
                 Console.WriteLine("***REGISTRAR FINCA***\n\n");
 
@@ -157,8 +157,8 @@ namespace AvanzadaTarea1
             {
                 bool continuar = true;
 
-                if (contadorDueno == 9)
-                    return "Lo sentimos. Ya no se pueden registrar dueños. Cupos llenos (10)";
+                if (contadorDueno == 10)
+                    return "Lo sentimos. Ya no se pueden registrar dueños. Cupos llenos (10)\n\n";
 
                 do
                 {
@@ -310,7 +310,7 @@ namespace AvanzadaTarea1
 
             do
             {
-                if (contadorEmpleado == 9)
+                if (contadorEmpleado == 10)
                     return "Lo sentimos, ya no se pueden registrar más empleados\n\n";
 
                 bool continuar = true;
@@ -418,8 +418,8 @@ namespace AvanzadaTarea1
 
             do
             {
-                if (contadorRaza == 9)
-                    return "Lo sentimos, ya no se pueden registrar más razas.";
+                if (contadorRaza == 10)
+                    return "Lo sentimos, ya no se pueden registrar más razas.\n\n";
 
                 Console.WriteLine("*****REGISTRAR RAZA*****\n\n");
 
@@ -503,6 +503,8 @@ namespace AvanzadaTarea1
             {
                 if (contadorRaza == 0 || contadorFinca == 0)
                     return "Lo sentimos. Para agregar un animal deben haber fincas y razas registradas\n\n";
+                if (contadorAnimal == 10)
+                    return "Lo sentimos, ya no se pueden agregar más animales\n\n";
 
                 Console.WriteLine("*****REGISTRAR ANIMAL*****\n\n");
 

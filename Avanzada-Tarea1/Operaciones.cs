@@ -212,11 +212,18 @@ namespace AvanzadaTarea1
 
                 do
                 {
-                    //verifico que sea entero
+
                     try
                     {
-                        Console.Write("Ingrese el número de finca: ");
 
+                        for(int i = 0; i < contadorFinca; i++)
+                        {
+                            Console.WriteLine("__________________________________________________\n");
+                            Console.WriteLine("Número de finca: " + finca[i].NoFinca + " | Nombre: " + finca[i].Nombre+ "\n");
+                            Console.WriteLine("__________________________________________________\n\n");
+                        }
+
+                        Console.Write("Ingrese el número de finca perteneciente: ");
                         idFinca = Convert.ToInt32(Console.ReadLine());
 
                         //verifica que exista la finca
@@ -531,7 +538,9 @@ namespace AvanzadaTarea1
 
                     for(int i = 0; i < contadorFinca; i++)
                     {
-                        Console.WriteLine("No. de finca: " + finca[i].NoFinca + "| Nombre: " + finca[i].Nombre);
+                        Console.WriteLine("__________________________________________________\n");
+                        Console.WriteLine("No. de finca: " + finca[i].NoFinca + " | Nombre: " + finca[i].Nombre);
+                        Console.WriteLine("__________________________________________________\n\n");
                     }
 
                     try
@@ -572,7 +581,7 @@ namespace AvanzadaTarea1
 
                     for(int i = 0; i < contadorRaza; i++)
                     {
-                        Console.WriteLine("Código: " + raza[i].Codigo + "|  Descripción: " + raza[i].Descripcion);
+                        Console.WriteLine("Código: " + raza[i].Codigo + " |  Descripción: " + raza[i].Descripcion);
                     }
 
                     try

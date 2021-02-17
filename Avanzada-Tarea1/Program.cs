@@ -34,9 +34,12 @@ namespace AvanzadaTarea1
                                 break;
                     case "3":   Console.WriteLine(op.RegistrarEmpleado());
                                 break;
-                    case "4": break;
-                    case "5": break;
-                    case "6": break;
+                    case "4":   Console.WriteLine(op.RegistrarRaza());
+                                break;
+                    case "5":   Console.WriteLine(op.RegistrarAnimal());
+                                break;
+                    case "6":   Console.WriteLine();
+                                break;
                     case "7":
                         bool salir = false;
                         Console.Clear();
@@ -78,9 +81,6 @@ namespace AvanzadaTarea1
 
             } while (continuar);
 
-            //Fecha de nacimiento
-            //DateTime thisDate1 = new DateTime(2020, 2, 12);
-            //Console.WriteLine(thisDate1.ToString("dd-MM-yy") + ".");
         }
     }
 }

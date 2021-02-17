@@ -30,7 +30,7 @@ namespace AvanzadaTarea1
 
             do
             {
-                if (contadorFinca >= 10)
+                if (contadorFinca == 9)
                     return "Lo sentimos. Ya no se pueden registrar fincas. Cupos llenos (10)";
 
                 Console.WriteLine("***REGISTRAR FINCA***\n\n");
@@ -107,7 +107,7 @@ namespace AvanzadaTarea1
                 finca[contadorFinca] = nuevaFinca;
                 contadorFinca++;
 
-                bool salirDelCiclo = true;
+                bool salirDelCiclo = false;
                 do
                 {
                     Console.Clear();
@@ -157,7 +157,7 @@ namespace AvanzadaTarea1
             {
                 bool continuar = true;
 
-                if (contadorDueno >= 10)
+                if (contadorDueno == 9)
                     return "Lo sentimos. Ya no se pueden registrar dueños. Cupos llenos (10)";
 
                 do
@@ -261,7 +261,7 @@ namespace AvanzadaTarea1
                 dueno[contadorDueno] = duenoNuevo;
                 contadorDueno++;
 
-                bool salirDelCiclo = true;
+                bool salirDelCiclo = false;
                 do
                 {
                     Console.Clear();
@@ -275,7 +275,7 @@ namespace AvanzadaTarea1
                     }
                     else if (respuesta == "N")
                     {
-                        salirDelCiclo = false;
+                        salirDelCiclo = true;
                         seguir = false;
                         Console.Clear();
 
@@ -303,7 +303,7 @@ namespace AvanzadaTarea1
 
             do
             {
-                if (contadorEmpleado >= 10)
+                if (contadorEmpleado == 9)
                     return "Lo sentimos, ya no se pueden registrar más empleados\n\n";
 
                 bool continuar = true;
@@ -371,7 +371,7 @@ namespace AvanzadaTarea1
                 empleado[contadorEmpleado] = empleadoNuevo;
                 contadorEmpleado++;
 
-                bool salirDelCiclo = true;
+                bool salirDelCiclo = false;
                 do
                 {
                     Console.Clear();
@@ -385,7 +385,7 @@ namespace AvanzadaTarea1
                     }
                     else if (respuesta == "N")
                     {
-                        salirDelCiclo = false;
+                        salirDelCiclo = true;
                         seguir = false;
                         Console.Clear();
 
@@ -404,7 +404,369 @@ namespace AvanzadaTarea1
         }
 
 
+        public string RegistrarRaza()
+        {
+            bool seguir = true;
+            int codRaza = 0;
 
+            do
+            {
+                if (contadorRaza == 9)
+                    return "Lo sentimos, ya no se pueden registrar más razas.";
+
+                Console.WriteLine("*****REGISTRAR RAZA*****\n\n");
+
+                bool continuar = true;
+                do
+                {
+                    try
+                    {
+                        Console.Write("Ingrese el código de raza: ");
+                        codRaza = Convert.ToInt32(Console.ReadLine());
+
+                        if (ExisteRaza(codRaza))
+                        {
+                            Console.WriteLine("Ya existe una raza con ese código. Intente de nuevo");
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            continuar = false;
+                        }
+
+                    }
+                    catch (Exception e)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Debe ingresar un dato numérico. Intente de nuevo\n\n");
+                    }
+
+                } while (continuar);
+
+                Console.Write("Ingrese la descripción: ");
+                string descripcion = Console.ReadLine();
+
+                Raza razaNueva = new Raza(codRaza, descripcion);
+
+                raza[contadorRaza] = razaNueva;
+                contadorRaza++;
+
+                bool salirDelCiclo = false;
+                do
+                {
+                    Console.Clear();
+                    Console.Write("¿Desea agregar otra raza? S/N: ");
+                    string respuesta = Console.ReadLine().ToUpper();
+
+                    if (respuesta == "S")
+                    {
+                        salirDelCiclo = true;
+                        Console.Clear();
+                    }
+                    else if (respuesta == "N")
+                    {
+                        salirDelCiclo = true;
+                        seguir = false;
+                        Console.Clear();
+
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("\nPor favor ingrese una opción válida: S/N");
+                    }
+
+                } while (!salirDelCiclo);
+
+            } while (seguir);
+
+            return "Raza registrada con éxito\n\n";
+        }
+
+
+        public string RegistrarAnimal()
+        {
+            bool seguir = true;
+            int idAnimal = 0;
+            Finca fincaNueva = null;
+            Raza razaNueva = null;
+            int dia = 0, mes = 0, anio = 0, sexo = 0;
+
+            do
+            {
+                if (contadorRaza == 0 || contadorFinca == 0)
+                    return "Lo sentimos. Para agregar un animal deben haber fincas y razas registradas\n\n";
+
+                Console.WriteLine("*****REGISTRAR ANIMAL*****\n\n");
+
+                bool continuar = true;
+
+                do
+                {
+                    Console.Write("Ingrese el ID del animal: ");
+                    idAnimal = Convert.ToInt32(Console.ReadLine());
+
+                    if(ExisteAnimal(idAnimal))
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Ya existe un animal con ese ID. Intente de nuevo");
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        continuar = false;
+                    }
+                } while (continuar);
+
+                Console.Write("Ingrese el nombre: ");
+                string nombre = Console.ReadLine();
+                Console.Clear();
+
+                do
+                {
+                    continuar = true;
+
+                    Console.WriteLine("Por favor ingrese el número de finca a la que pertenece el animal:\n\n");
+                    int opcion = 0;
+
+                    for(int i = 0; i < contadorFinca; i++)
+                    {
+                        Console.WriteLine("No. de finca: " + finca[i].NoFinca + "| Nombre: " + finca[i].Nombre);
+                    }
+
+                    try
+                    {
+                        Console.Write("\n\nIngrese número de finca: ");
+
+                        opcion = Convert.ToInt32(Console.ReadLine());
+
+                        if(BuscaFinca(opcion) != null)
+                        {
+                            fincaNueva = BuscaFinca(opcion);
+                            continuar = false;
+                            Console.Clear();
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("El número de finca no coincide con ninguna finca registrada. Intente de nuevo");
+                        }
+
+
+                    }
+                    catch(Exception e)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Debe ingresar una de las opciones mostradas. Intente de nuevo.");
+                    }
+
+
+                } while (continuar);
+
+                do
+                {
+                    continuar = true;
+
+                    Console.WriteLine("Por favor ingrese el código de raza a la que pertenece el animal:\n\n");
+                    int opcion = 0;
+
+                    for(int i = 0; i < contadorRaza; i++)
+                    {
+                        Console.WriteLine("Código: " + raza[i].Codigo + "|  Descripción: " + raza[i].Descripcion);
+                    }
+
+                    try
+                    {
+                        Console.Write("\n\nIngrese el código de raza: ");
+
+                        opcion = Convert.ToInt32(Console.ReadLine());
+
+                        if(BuscaRaza(opcion) != null)
+                        {
+                            razaNueva = BuscaRaza(opcion);
+                            continuar = false;
+                        }
+
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("El código de raza no coincide con ninguna raza registrada. Intente de nuevo");
+                        }
+
+                    }
+                    catch (Exception e)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Debe ingresar una de las opciones mostradas. Intente de nuevo.");
+                    }
+
+                } while (continuar);
+
+                Console.Clear();
+
+                do
+                {
+                    continuar = true;
+
+                    Console.WriteLine("Por favor ingrese la fecha de nacimiento en el orden que se le solicita:\n\n");
+
+                    try
+                    {
+                        Console.Write("Ingrese el día de nacimiento: ");
+                        dia = Convert.ToInt32(Console.ReadLine());
+
+                        if(dia < 1 || dia > 31)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Debe elegir un día en el rango 1 - 31. Intente de nuevo\n\n");
+                        }
+                        else
+                        {
+                            continuar = false;
+                            Console.Clear();
+                        }
+
+                    }
+                    catch(Exception e)
+                    {
+                        Console.WriteLine("Por favor ingrese solo datos numéricos");
+                    }
+                } while (continuar);
+
+                do
+                {
+                    continuar = true;
+
+                    try
+                    {
+                        Console.Write("Ingrese el mes de nacimiento: ");
+                        mes = Convert.ToInt32(Console.ReadLine());
+
+                        if (mes < 1 || mes > 12)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Debe elegir un mes en el rango 1 - 12. Intente de nuevo\n\n");
+                        }
+                        else
+                        {
+                            continuar = false;
+                            Console.Clear();
+                        }
+
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Por favor ingrese solo datos numéricos");
+                    }
+                } while (continuar);
+
+                do
+                {
+                    continuar = true;
+
+                    try
+                    {
+                        Console.Write("Ingrese el año de nacimiento: ");
+                        anio = Convert.ToInt32(Console.ReadLine());
+
+                        if (anio < 2000)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Debe elegir un año mayor al año 2000. Intente de nuevo\n\n");
+                        }
+                        else
+                        {
+                            continuar = false;
+                            Console.Clear();
+                        }
+
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Por favor ingrese solo datos numéricos");
+                    }
+                } while (continuar);
+
+                //Fecha de nacimiento en formato
+                DateTime fechaNacimiento = new DateTime(anio, dia, mes);
+                fechaNacimiento.ToString("dd-MM-yy");
+
+                do
+                {
+                    continuar = true;
+
+                    try
+                    {
+                        Console.WriteLine("Ingrese el sexo del animal: ");
+                        Console.WriteLine("1. Hembra\n2. Macho\n\n");
+
+                        Console.Write("Tu opción: ");
+                        sexo = Convert.ToInt32(Console.ReadLine());
+
+                        if (sexo < 1 || sexo > 2)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Debe digitar 1 o 2. Intente de nuevo");
+                        }
+                        else
+                        {
+                            continuar = false;
+                            Console.Clear();
+                        }
+
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Por favor ingrese solo datos numéricos");
+                    }
+                } while (continuar);
+
+                Console.Write("Ingrese el nombre de la madre: ");
+                string madre = Console.ReadLine();
+
+                Console.Clear();
+
+                Console.Write("Ingrese el nombre del padre: ");
+                string padre = Console.ReadLine();
+
+                //se pasan al objeto los datos obtenidos
+                Animal animalNuevo = new Animal(idAnimal, nombre, fincaNueva, razaNueva, fechaNacimiento,
+                                                sexo, madre, padre);
+
+                animal[contadorAnimal] = animalNuevo;
+                contadorAnimal++;
+
+                bool salirDelCiclo = false;
+                do
+                {
+                    Console.Clear();
+                    Console.Write("¿Desea agregar otro animal? S/N: ");
+                    string respuesta = Console.ReadLine().ToUpper();
+
+                    if (respuesta == "S")
+                    {
+                        salirDelCiclo = true;
+                        Console.Clear();
+                    }
+                    else if (respuesta == "N")
+                    {
+                        salirDelCiclo = true;
+                        seguir = false;
+                        Console.Clear();
+
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("\nPor favor ingrese una opción válida: S/N");
+                    }
+
+                } while (!salirDelCiclo);
+
+            } while (seguir);
+
+            return "Animal registrado con éxito\n\n";
+        }
         public bool ExisteFinca(int id)
         {
             //se verifica que exista al menos una finca
@@ -484,12 +846,63 @@ namespace AvanzadaTarea1
             return null;
         }
 
+        public Raza BuscaRaza(int id)
+        {
+            foreach (Raza r in raza)
+            {
+                if (r.Codigo == id)
+                {
+                    return r;
+                }
+            }
+
+            return null;
+        }
 
         public bool ExisteEmpleado(int id)
         {
             try
             {
                 foreach (Empleado e in empleado)
+                {
+                    if (e.Id == id)
+                        return true;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+
+            return false;
+        }
+
+
+        public bool ExisteRaza(int id)
+        {
+            try
+            {
+                foreach (Raza e in raza)
+                {
+                    if (e.Codigo == id)
+                        return true;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+
+            return false;
+        }
+
+        public bool ExisteAnimal(int id)
+        {
+            try
+            {
+                foreach (Animal e in animal)
                 {
                     if (e.Id == id)
                         return true;

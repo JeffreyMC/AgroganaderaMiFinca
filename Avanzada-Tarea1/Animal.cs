@@ -4,7 +4,7 @@ namespace AvanzadaTarea1
     public class Animal
     {
         public Animal(int id, string nombre, Finca finca, Raza raza, DateTime fechaNacimiento,
-                        int sexo, string padre, string madre)
+                        int sexo, string madre, string padre)
         {
             Id = id;
             Nombre = nombre;
@@ -12,8 +12,8 @@ namespace AvanzadaTarea1
             RazaAnimal = raza;
             FechaNacimiento = fechaNacimiento;
             Sexo = sexo;
-            Padre = padre;
             Madre = madre;
+            Padre = padre;
         }
 
         public Animal() { }

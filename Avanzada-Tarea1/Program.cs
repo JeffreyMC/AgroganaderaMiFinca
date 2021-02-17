@@ -38,8 +38,64 @@ namespace AvanzadaTarea1
                                 break;
                     case "5":   Console.WriteLine(op.RegistrarAnimal());
                                 break;
-                    case "6":   Console.WriteLine();
-                                break;
+                    case "6":
+
+                        bool seguir = true;
+
+                        do
+                        {
+                            Console.WriteLine("Elige una de las siguientes opciones:\n\n");
+                            Console.WriteLine("1. Lista de fincas");
+                            Console.WriteLine("2. Lista de dueños");
+                            Console.WriteLine("3. Lista de empleados");
+                            Console.WriteLine("4. Lista de razas");
+                            Console.WriteLine("5. Lista de animales");
+                            Console.WriteLine("6. Regresar al menú\n\n");
+
+                            Console.Write("Tu elección: ");
+                            string eleccion = Console.ReadLine();
+
+                            switch (eleccion)
+                            {
+                                case "1":   
+                                    Console.WriteLine(op.ListaFincas());
+                                    Console.WriteLine("\n\nPresione una tecla para continuar");
+                                    Console.ReadKey();
+                                    Console.Clear();
+                                    break;
+                                case "2":
+                                    Console.WriteLine(op.ListaDuenos());
+                                    Console.WriteLine("\n\nPresione una tecla para continuar");
+                                    Console.ReadKey();
+                                    Console.Clear();
+                                    break;
+                                case "3":
+                                    Console.WriteLine(op.ListaEmpleados());
+                                    Console.WriteLine("\n\nPresione una tecla para continuar");
+                                    Console.ReadKey();
+                                    Console.Clear();
+                                    break;
+                                case "4":
+                                    Console.WriteLine(op.ListaRazas());
+                                    Console.WriteLine("\n\nPresione una tecla para continuar");
+                                    Console.ReadKey();
+                                    Console.Clear();
+                                    break;
+                                case "5":
+                                    Console.WriteLine(op.ListaAnimales());
+                                    Console.WriteLine("\n\nPresione una tecla para continuar");
+                                    Console.ReadKey();
+                                    Console.Clear();
+                                    break;
+                                case "6":   Console.Clear();
+                                            seguir = false;
+                                            break;
+                                default: Console.WriteLine("Por favor ingrese una opción correcta. \n\n");
+                                    break;
+                            }
+                        } while (seguir);
+
+                        break;
                     case "7":
                         bool salir = false;
                         Console.Clear();

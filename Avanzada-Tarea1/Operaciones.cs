@@ -916,5 +916,151 @@ namespace AvanzadaTarea1
 
             return false;
         }
+
+
+        //LISTAS DE LOS OBJETOS
+        public string ListaFincas()
+        {
+            string lista = "";
+
+            Console.Clear();
+            Console.WriteLine("*****LISTA DE FINCAS*****\n\n");
+
+            if (contadorFinca == 0)
+                return "No hay fincas registradas\n\n";
+
+
+            for (int i = 0; i < contadorFinca; i++)
+            {
+
+                lista += "__________________________________\n";
+                lista += "REGISTRO " + (i + 1) + "\n\n";
+                lista += "Número de finca: " + finca[i].NoFinca + "\n";
+                lista += "Nombre: " + finca[i].Nombre + "\n";
+                lista += "Tamaño: " + finca[i].Tamanio + "\n";
+                lista += "Dirección: " + finca[i].Direccion + "\n";
+                lista += "Teléfono: " + finca[i].Telefono + "\n";
+                lista += "__________________________________\n\n";
+
+
+            }
+
+            return lista;
+        }
+
+        public string ListaDuenos()
+        {
+            string lista = "";
+
+            Console.Clear();
+            Console.WriteLine("*****LISTA DE DUEÑOS*****\n\n");
+
+            if (contadorDueno == 0)
+                return "No hay dueños registrados\n\n";
+
+            for (int i = 0; i < contadorDueno; i++)
+            {
+
+                lista += "__________________________________\n";
+                lista += "REGISTRO " + (i + 1) + "\n\n";
+                lista += "ID: " + dueno[i].Id + "\n";
+                lista += "Nombre: " + dueno[i].Nombre + "\n";
+                lista += "Apellidos: " + dueno[i].PrimerApellido + " " + dueno[i].SegundoApellido + "\n";
+                lista += "Correo: " + dueno[i].Correo + "\n";
+                lista += "Celular: " + dueno[i].NumeroCelular + "\n";
+                lista += "No. Finca asociada: " + dueno[i].FincaAsociada.NoFinca + "\n";
+                lista += "Nombre de Finca asociada: " + dueno[i].FincaAsociada.Nombre + "\n";
+                lista += "__________________________________\n\n";
+            }
+
+
+            return lista;
+        }
+
+        public string ListaEmpleados()
+        {
+            string lista = "";
+
+            Console.Clear();
+            Console.WriteLine("*****LISTA DE EMPLEADOS*****\n\n");
+
+            if (contadorEmpleado == 0)
+                return "No hay empleados registrados\n\n";
+
+            for (int i = 0; i < contadorEmpleado; i++)
+            {
+
+                lista += "__________________________________\n";
+                lista += "REGISTRO " + (i + 1) + "\n\n";
+                lista += "ID: " + empleado[i].Id + "\n";
+                lista += "Nombre: " + empleado[i].Nombre + "\n";
+                lista += "Apellidos: " + empleado[i].PrimerApellido + " " + empleado[i].SegundoApellido + "\n";
+                lista += "Salario: " + empleado[i].Salario + "\n";
+                lista += "__________________________________\n\n";
+            }
+
+
+            return lista;
+        }
+
+        public string ListaRazas()
+        {
+            string lista = "";
+
+            Console.Clear();
+            Console.WriteLine("*****LISTA DE RAZAS*****\n\n");
+
+            if (contadorRaza == 0)
+                return "No hay razas registrados\n\n";
+
+            for (int i = 0; i < contadorRaza; i++)
+            {
+
+                lista += "__________________________________\n";
+                lista += "REGISTRO " + (i + 1) + "\n\n";
+                lista += "Código: " + raza[i].Codigo + "\n";
+                lista += "Descripción: " + raza[i].Descripcion + "\n";
+                lista += "__________________________________\n\n";
+            }
+
+
+            return lista;
+        }
+
+        public string ListaAnimales()
+        {
+            string lista = "";
+
+            Console.Clear();
+            Console.WriteLine("*****LISTA DE ANIMALES*****\n\n");
+
+            if (contadorAnimal == 0)
+                return "No hay animales registrados\n\n";
+
+            for (int i = 0; i < contadorAnimal; i++)
+            {
+
+                lista += "__________________________________\n";
+                lista += "REGISTRO " + (i + 1) + "\n\n";
+                lista += "ID: " + animal[i].Id + "\n";
+                lista += "Nombre: " + animal[i].Nombre + "\n";
+                lista += "Nombre finca: " + animal[i].FincaAsociada.Nombre + "\n";
+                lista += "Raza: " + animal[i].RazaAnimal.Descripcion + "\n";
+                lista += "Fecha de nacimiento: " + animal[i].FechaNacimiento + "\n";
+
+                if(animal[i].Sexo == 1)
+                    lista += "Sexo: Hembra\n";
+                else
+                    lista += "Sexo: Macho\n";
+
+                lista += "Nombre madre: " + animal[i].Madre + "\n";
+                lista += "Nombre padre: " + animal[i].Padre + "\n";
+                lista += "__________________________________\n\n";
+            }
+
+
+            return lista;
+        }
     }
 }
+

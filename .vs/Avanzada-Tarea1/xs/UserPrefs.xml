@@ -1,16 +1,17 @@
 ﻿<Properties StartupConfiguration="{A65F5E15-A812-4EC8-8624-A759801F9FE1}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Avanzada-Tarea1/Animal.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Avanzada-Tarea1/Operaciones.cs">
     <Files>
-      <File FileName="Avanzada-Tarea1/Program.cs" Line="33" Column="72" />
-      <File FileName="Avanzada-Tarea1/Operaciones.cs" Line="495" Column="17" />
-      <File FileName="Avanzada-Tarea1/Animal.cs" Line="32" Column="1" />
+      <File FileName="Avanzada-Tarea1/Program.cs" Line="85" Column="71" />
+      <File FileName="Avanzada-Tarea1/Operaciones.cs" Line="1058" Column="65" />
+      <File FileName="Avanzada-Tarea1/Animal.cs" Line="16" Column="27" />
+      <File FileName="Avanzada-Tarea1/Empleado.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Avanzada-Tarea1" expanded="True">
             <Node name="Avanzada-Tarea1" expanded="True">
-              <Node name="Animal.cs" selected="True" />
+              <Node name="Operaciones.cs" selected="True" />
             </Node>
           </Node>
         </State>

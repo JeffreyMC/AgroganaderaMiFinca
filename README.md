@@ -1,5 +1,11 @@
-![Twitter Follow](https://img.shields.io/twitter/follow/JeffreyMC16?style=social)
-![GitHub](https://img.shields.io/github/license/JeffreyMC/AgroganaderaMiFinca)
+<a href="https://github.com/JeffreyMC/" alt="JeffreyMC">
+        <img src="https://img.shields.io/badge/JeffreyMC-Developer-red" /></a>
+
+<a href="https://twitter.com/JeffreyMC16" alt="Twitter">
+        <img src="https://img.shields.io/twitter/follow/JeffreyMC16" /></a>        
+
+<a href="https://github.com/JeffreyMC/AgroganaderiaMiFinca" alt="LICENSE">
+        <img src="https://img.shields.io/github/license/JeffreyMC/AgroganaderiaMiFinca" /></a>
 
 # Agroganadería Mi Finca
 

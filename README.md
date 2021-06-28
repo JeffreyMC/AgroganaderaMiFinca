@@ -1,3 +1,6 @@
+![Twitter Follow](https://img.shields.io/twitter/follow/JeffreyMC16?style=social)
+![GitHub](https://img.shields.io/github/license/JeffreyMC/AgroganaderaMiFinca)
+
 # Agroganadería Mi Finca
 
 ## Tarea 1 programación avanzada UNED (I CUATRIMESTRE 2021)
